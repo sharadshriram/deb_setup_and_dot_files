@@ -9,10 +9,17 @@ apt install -y --quiet --upgrade build-essentials exa python3 python3-venv git c
 # Install: node, npm, fish (shell), neovim, tmux
 apt install -y --quiet --upgrade nodejs npm fish neovim tmux
 
-# Install: emoji booster
-apt install -y --quiet --upgrade ibus-typing-booster
+# Install: emoji booster, gconf2
+apt install -y --quiet --upgrade ibus-typing-booster gconf2
 
-# Install: nerd-fonts=Hack
+# Install: nerd-fonts=JetBrainsMono
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+unzip JetBrainsMono.zip -d /usr/local/share/fonts
+rm JetBrainsMono.zip
+fc-cache -c -v
+
+# Set: Terminal font to JetBrainsMono
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "JetBrainsMono Nerd Font 12"
 
 
 echo "Install: git commitzen"
